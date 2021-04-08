@@ -1,9 +1,22 @@
 version: "3.9"
 services:
-  express:
+  web:
     build: "."
+    restart: always
     ports:
       - "${EXPRESS_PORT}:3000"
     volumes:
       - ".:/app"
       - "/app/node_modules"
+  db:
+    image: "mariadb:10.5"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    ports:
+      - "${MYSQL_PORT}:3306"
+  adminer:
+    image: "adminer:4"
+    restart: always
+    ports:
+      - "${ADMINER_PORT}:8080"
