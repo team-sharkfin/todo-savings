@@ -28,9 +28,13 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
-const app = express();
+// Listen on port 3000 when running in Docker or port 9000 when running locally.
+// Listening on a different port when running locally allows webpack to listen
+// on port 3000 and proxy requests to Express so the authentication callback
+// URLs will work in both environments.
 const port = process.env.NODE_ENV === "production" ? 3000 : 9000;
 
+const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session);
