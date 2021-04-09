@@ -14,5 +14,4 @@ ENV NODE_ENV=production
 RUN npm ci
 COPY --from=builder /app/public public/
 COPY server.js .
-EXPOSE 3000
 CMD ["node", "server.js"]
