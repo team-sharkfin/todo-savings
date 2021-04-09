@@ -26,7 +26,7 @@ passport.deserializeUser(function (obj, cb) {
 });
 
 const app = express();
-const port = 3000;
+const port = process.env.NODE_ENV === "production" ? 3000 : 9000;
 
 app.use(express.static("public"));
 app.use(require("body-parser").urlencoded({ extended: true }));
@@ -52,4 +52,6 @@ app.get(
   }
 );
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Express listening on http://localhost:${port}`);
+});

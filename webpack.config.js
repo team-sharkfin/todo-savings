@@ -11,4 +11,10 @@ module.exports = {
     filename: "client.js",
   },
   plugins: [new HtmlWebpackPlugin()],
+  devServer: {
+    port: 3000,
+    proxy: {
+      "/": "http://localhost:9000",
+    },
+  },
 };
