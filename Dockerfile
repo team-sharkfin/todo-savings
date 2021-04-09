@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json .
 RUN npm ci
 COPY client client/
+COPY babel.config.json .
 COPY webpack.config.js .
 ENV NODE_ENV=production
 RUN npm run build

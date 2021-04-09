@@ -10,7 +10,23 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     filename: "client.js",
   },
-  plugins: [new HtmlWebpackPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".jsx", ".js", ".json"],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./client/index.html",
+    }),
+  ],
   devServer: {
     port: 3000,
     proxy: {
