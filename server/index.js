@@ -1,10 +1,10 @@
 // https://expressjs.com/en/starter/hello-world.html
 import bodyParser from "body-parser";
 import express from "express";
-import session from "express-session";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
 import router from "./router.js";
+import session from "./session.js";
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
 passport.use(
@@ -33,15 +33,7 @@ const port = process.env.NODE_ENV === "production" ? 3000 : 9000;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(
-  session({
-    secret: process.env.EXPRESS_SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
+app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router);
