@@ -1,5 +1,4 @@
 import { render } from "react-dom";
-
-const App = () => <>Hello world</>;
+import App from "./App.jsx";
 
 render(<App />, document.getElementById("root"));
