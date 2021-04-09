@@ -9,9 +9,6 @@ services:
       GITHUB_CLIENT_SECRET: "${GITHUB_CLIENT_SECRET}"
     ports:
       - "${EXPRESS_PORT}:3000"
-    volumes:
-      - ".:/app"
-      - "/app/node_modules"
   db:
     image: "mariadb:10.5"
     restart: always

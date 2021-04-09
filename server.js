@@ -28,6 +28,7 @@ passport.deserializeUser(function (obj, cb) {
 const app = express();
 const port = 3000;
 
+app.use(express.static("public"));
 app.use(require("body-parser").urlencoded({ extended: true }));
 
 app.use(
@@ -50,9 +51,5 @@ app.get(
     res.redirect("/");
   }
 );
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(port);
