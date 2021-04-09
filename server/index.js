@@ -4,9 +4,6 @@ import express from "express";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
-// const express = require("express");
-// const passport = require("passport");
-// const { Strategy: GitHubStrategy } = require("passport-github");
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
 passport.use(
