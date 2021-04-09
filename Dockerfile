@@ -14,5 +14,5 @@ COPY package*.json .
 ENV NODE_ENV=production
 RUN npm ci
 COPY --from=builder /app/public public/
-COPY server.js .
-CMD ["node", "server.js"]
+COPY server server/
+CMD ["node", "server"]
