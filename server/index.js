@@ -3,20 +3,15 @@ import bodyParser from "body-parser";
 import express from "express";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
+import { GITHUB_STRATEGY_CONFIG } from "./config.js";
 import router from "./router.js";
 import session from "./session.js";
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
 passport.use(
   new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "/login/github/callback",
-    },
-    function (accessToken, refreshToken, profile, cb) {
-      return cb(null, profile);
-    }
+    GITHUB_STRATEGY_CONFIG,
+    (accessToken, refreshToken, profile, cb) => cb(null, profile)
   )
 );
 
