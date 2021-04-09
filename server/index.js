@@ -1,7 +1,12 @@
 // https://expressjs.com/en/starter/hello-world.html
-const express = require("express");
-const passport = require("passport");
-const { Strategy: GitHubStrategy } = require("passport-github");
+import bodyParser from "body-parser";
+import express from "express";
+import session from "express-session";
+import passport from "passport";
+import { Strategy as GitHubStrategy } from "passport-github";
+// const express = require("express");
+// const passport = require("passport");
+// const { Strategy: GitHubStrategy } = require("passport-github");
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
 passport.use(
@@ -29,10 +34,10 @@ const app = express();
 const port = process.env.NODE_ENV === "production" ? 3000 : 9000;
 
 app.use(express.static("public"));
-app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
-  require("express-session")({
+  session({
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: true,
     saveUninitialized: true,

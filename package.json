@@ -1,6 +1,7 @@
 {
   "name": "todo-savings",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "webpack",
     "lint": "eslint .",

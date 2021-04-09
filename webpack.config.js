@@ -1,10 +1,10 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
 
-const { NODE_ENV } = process.env;
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-module.exports = {
-  mode: NODE_ENV ?? "development",
+export default {
+  mode: process.env.NODE_ENV ?? "development",
   entry: "./client",
   output: {
     path: path.resolve(__dirname, "public"),
