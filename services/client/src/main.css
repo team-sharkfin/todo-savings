@@ -74,6 +74,13 @@ body {
     border-color: #e6e8e6;
 }
 
+#settingsBtn {
+    width: 100%;
+    font-size: 1rem;
+    background-color: #6f7a9b;
+    border-color: #e6e8e6;
+}
+
 #dueBadge {
     background-color: #A23E2A;
 }
