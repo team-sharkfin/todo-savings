@@ -1,27 +1,28 @@
 import { Router } from "express";
 import passport from "passport";
 
-export const BASE_LOGIN_PATH = "/login";
-export const GITHUB_LOGIN_PATH = "/github";
-export const GITHUB_CALLBACK_PATH = `${GITHUB_LOGIN_PATH}/callback`;
+const {
+  APP_BASE_URL,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITHUB_CALLBACK_PATH,
+} = process.env;
 
 export const GITHUB_STRATEGY_CONFIG = {
-  clientID: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: `${BASE_LOGIN_PATH}${GITHUB_CALLBACK_PATH}`,
+  clientID: GITHUB_CLIENT_ID,
+  clientSecret: GITHUB_CLIENT_SECRET,
+  callbackURL: GITHUB_CALLBACK_PATH,
 };
 
-export function loginRouter() {
+export function githubLoginRouter() {
   const router = Router();
 
-  router.get(GITHUB_LOGIN_PATH, passport.authenticate("github"));
+  router.get("/login/github", passport.authenticate("github"));
 
   router.get(
     GITHUB_CALLBACK_PATH,
-    passport.authenticate("github", { failureRedirect: BASE_LOGIN_PATH }),
-    function (req, res) {
-      res.redirect("/");
-    }
+    passport.authenticate("github", { failureRedirect: APP_BASE_URL }),
+    (req, res) => res.redirect(APP_BASE_URL)
   );
 
   return router;

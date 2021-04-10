@@ -9,9 +9,11 @@ services:
     build: "./services/server"
     restart: always
     environment:
+      APP_BASE_URL: "${APP_BASE_URL}"
       EXPRESS_SESSION_SECRET: "${EXPRESS_SESSION_SECRET}"
       GITHUB_CLIENT_ID: "${GITHUB_CLIENT_ID}"
       GITHUB_CLIENT_SECRET: "${GITHUB_CLIENT_SECRET}"
+      GITHUB_CALLBACK_PATH: "${GITHUB_CALLBACK_PATH}"
     ports:
       - "3000:3000"
   db:
