@@ -1,5 +1,6 @@
 {
   "env": {
+    "browser": true,
     "commonjs": true,
     "es2021": true,
     "node": true
@@ -12,7 +13,10 @@
   ],
   "parserOptions": {
     "ecmaVersion": 12,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "settings": {
     "react": {
@@ -21,21 +25,5 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off"
-  },
-  "overrides": [
-    {
-      "files": [
-        "./client/**/*"
-      ],
-      "env": {
-        "browser": true,
-        "node": false
-      },
-      "parserOptions": {
-        "ecmaFeatures": {
-          "jsx": true
-        }
-      }
-    }
-  ]
+  }
 }
