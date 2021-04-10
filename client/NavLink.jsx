@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 const NavLink = ({ children, ...props }) => (
@@ -10,5 +11,9 @@ const NavLink = ({ children, ...props }) => (
     {children}
   </RouterNavLink>
 );
+
+NavLink.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default NavLink;
