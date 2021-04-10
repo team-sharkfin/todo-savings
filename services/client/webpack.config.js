@@ -4,8 +4,6 @@ const webpack = require("webpack");
 
 const { EXPRESS_BASE_URL, NODE_ENV } = process.env;
 
-console.log(process.env.EXPRESS_BASE_URL);
-
 module.exports = {
   mode: NODE_ENV ?? "development",
   output: {
