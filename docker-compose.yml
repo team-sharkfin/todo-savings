@@ -3,6 +3,9 @@ services:
   client:
     build: "./services/client"
     restart: always
+    environment:
+      # keep in sync with Dockerfile
+      EXPRESS_BASE_URL: "${EXPRESS_BASE_URL}"
     ports:
       - "8000:80"
   server:

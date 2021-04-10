@@ -1,10 +1,9 @@
 // https://expressjs.com/en/starter/hello-world.html
 import bodyParser from "body-parser";
-import cors from "cors";
 import express from "express";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
-import { API_BASE_PATH, apiRouter } from "./api.js";
+import { apiRouter } from "./api.js";
 import { GITHUB_STRATEGY_CONFIG, githubLoginRouter } from "./github.js";
 import session from "./session.js";
 
@@ -30,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(API_BASE_PATH, cors(), apiRouter());
+app.use(apiRouter());
 app.use(githubLoginRouter());
 
 const port = 3000;

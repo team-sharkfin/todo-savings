@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . .
+ENV EXPRESS_BASE_URL http://localhost:3000
 ENV NODE_ENV production
 RUN npm run build
 

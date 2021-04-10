@@ -1,6 +1,8 @@
-const API_BASE_URL = "http://localhost:3000/api";
+import { EXPRESS_BASE_URL } from "./config";
 
 export async function checkSession() {
-  const response = await fetch(`${API_BASE_URL}/session`);
+  const response = await fetch(`${EXPRESS_BASE_URL}/session`, {
+    credentials: "include",
+  });
   return response.json();
 }
