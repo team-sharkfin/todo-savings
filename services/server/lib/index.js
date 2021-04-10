@@ -4,7 +4,7 @@ import express from "express";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
 import { GITHUB_STRATEGY_CONFIG } from "./config.js";
-import router from "./router.js";
+import { loginRouter } from "./login.js";
 import session from "./session.js";
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(router);
+app.use(loginRouter());
 
 app.listen(port, () => {
   console.log(`Express listening on http://localhost:${port}`);
