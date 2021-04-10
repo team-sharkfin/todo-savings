@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { checkSession } from "./api";
+import { checkSession } from "./api.js";
+import Landing from "./Landing.jsx";
 import Navbar from "./Navbar.jsx";
 import "./App.css";
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    checkSession().then((data) => {
-      console.log(data);
+    checkSession().then(({ session }) => {
+      setLoggedIn(session);
       setLoading(false);
     });
   });
 
   if (isLoading) {
     return null;
+  }
+
+  if (!isLoggedIn) {
+    return <Landing />;
   }
 
   return (

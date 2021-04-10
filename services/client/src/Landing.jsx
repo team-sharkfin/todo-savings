@@ -1,7 +1,9 @@
+import { EXPRESS_BASE_URL } from "./config.js";
+
 const Landing = () => {
   function handleSignInButtonClick(event) {
     event.preventDefault();
-    window.location.href = "http://localhost:3000/login/github";
+    window.location.href = `${EXPRESS_BASE_URL}/login/github`;
   }
 
   return (
