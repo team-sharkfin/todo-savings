@@ -1,8 +1,11 @@
-import session from "express-session";
-import { EXPRESS_SESSION_SECRET } from "./config.js";
+import expressSession from "express-session";
 
-export default session({
-  secret: EXPRESS_SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
-});
+const { EXPRESS_SESSION_SECRET } = process.env;
+
+export default function session() {
+  return expressSession({
+    secret: EXPRESS_SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  });
+}

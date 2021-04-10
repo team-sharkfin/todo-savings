@@ -32,7 +32,7 @@ const port = process.env.NODE_ENV === "production" ? 3000 : 9000;
 const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session);
+app.use(session());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(loginRouter());
