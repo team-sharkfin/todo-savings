@@ -9,7 +9,7 @@ import {
   BASE_LOGIN_PATH,
   GITHUB_STRATEGY_CONFIG,
   loginRouter,
-} from "./login.js";
+} from "./github.js";
 import session from "./session.js";
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
