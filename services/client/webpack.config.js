@@ -3,6 +3,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: process.env.NODE_ENV ?? "development",
+  output: {
+    filename: "[name].[contenthash].js",
+  },
   module: {
     rules: [
       {
@@ -23,6 +26,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
   ],
 };
