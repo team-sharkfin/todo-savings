@@ -5,7 +5,6 @@ export const {
 } = process.env;
 
 export const BASE_LOGIN_PATH = "/login";
-
 export const GITHUB_LOGIN_PATH = `${BASE_LOGIN_PATH}/github`;
 export const GITHUB_CALLBACK_PATH = `${GITHUB_LOGIN_PATH}/callback`;
 
