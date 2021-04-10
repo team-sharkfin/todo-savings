@@ -3,7 +3,11 @@ import bodyParser from "body-parser";
 import express from "express";
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github";
-import { GITHUB_STRATEGY_CONFIG, loginRouter } from "./login.js";
+import {
+  BASE_LOGIN_PATH,
+  GITHUB_STRATEGY_CONFIG,
+  loginRouter,
+} from "./login.js";
 import session from "./session.js";
 
 // https://github.com/passport/express-4.x-facebook-example/blob/master/server.js
@@ -28,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(loginRouter());
+app.use(BASE_LOGIN_PATH, loginRouter());
 
 const port = 3000;
 
