@@ -1,4 +1,4 @@
-div.app {
+div.fadein {
   animation: fadein ease 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;

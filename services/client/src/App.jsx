@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="app">
+      <div className="fadein">
         <Navbar />
         <div className="container"></div>
       </div>
