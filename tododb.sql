@@ -52,7 +52,8 @@ CREATE TABLE `Users` (
   `registered` date NOT NULL DEFAULT curdate(),
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`u_id`),
-  UNIQUE KEY `u_id` (`u_id`)
+  UNIQUE KEY `u_id` (`u_id`),
+  UNIQUE KEY `git_id` (`git_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

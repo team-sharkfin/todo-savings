@@ -1,17 +1,24 @@
 version: "3.9"
 services:
-  web:
-    build: "."
+  client:
+    build: "./services/client"
     restart: always
     environment:
+      # keep in sync with Dockerfile
+      EXPRESS_BASE_URL: "${EXPRESS_BASE_URL}"
+    ports:
+      - "8000:80"
+  server:
+    build: "./services/server"
+    restart: always
+    environment:
+      APP_BASE_URL: "${APP_BASE_URL}"
       EXPRESS_SESSION_SECRET: "${EXPRESS_SESSION_SECRET}"
       GITHUB_CLIENT_ID: "${GITHUB_CLIENT_ID}"
       GITHUB_CLIENT_SECRET: "${GITHUB_CLIENT_SECRET}"
+      GITHUB_CALLBACK_PATH: "${GITHUB_CALLBACK_PATH}"
     ports:
-      - "${EXPRESS_PORT}:3000"
-    volumes:
-      - ".:/app"
-      - "/app/node_modules"
+      - "3000:3000"
   db:
     image: "mariadb:10.5"
     restart: always
@@ -19,13 +26,13 @@ services:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
     ports:
-      - "${MYSQL_PORT}:3306"
+      - "3306:3306"
     volumes:
       - "./data:/var/lib/mysql"
   adminer:
     image: "adminer:4"
     restart: always
     ports:
-      - "${ADMINER_PORT}:8080"
+      - "8080:8080"
     links:
       - db
