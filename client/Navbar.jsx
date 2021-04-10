@@ -1,3 +1,5 @@
+import NavLink from "./NavLink";
+
 const Navbar = () => (
   <nav
     className="navbar navbar-expand-md sticky-top navbar-dark"
@@ -21,19 +23,13 @@ const Navbar = () => (
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
-              Profile
-            </a>
+            <NavLink to="/profile">Profile</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Tasks
-            </a>
+            <NavLink to="/tasks">Tasks</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Rewards
-            </a>
+            <NavLink to="/rewards">Rewards</NavLink>
           </li>
         </ul>
       </div>
