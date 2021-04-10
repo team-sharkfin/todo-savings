@@ -19,18 +19,13 @@ const App = () => {
   if (isLoading) {
     return null;
   }
-
-  if (!isLoggedIn) {
-    return <Landing />;
-  }
-
   return (
-    <BrowserRouter>
-      <div className="fadein">
-        <Navbar />
-        <div className="container"></div>
-      </div>
-    </BrowserRouter>
+    <div className="fadein">
+      <BrowserRouter>
+        <Navbar displayLinks={isLoggedIn} />
+        <div className="container mt-1">{!isLoggedIn && <Landing />}</div>
+      </BrowserRouter>
+    </div>
   );
 };
 
