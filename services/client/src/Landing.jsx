@@ -11,8 +11,11 @@ const Landing = () => {
       <h1 className="display-4">Reward yourself by doing</h1>
       <p className="lead">
         Whether you have a simple treat or a greater goal that you want to save
-        towards, Penny Jar allows you to set tasks to help you reach those
-        financial rewards.
+        towards,{" "}
+        <strong>
+          <em>Penny Jar</em>
+        </strong>{" "}
+        allows you to set tasks to help you reach those financial rewards.
       </p>
       <button
         type="button"
