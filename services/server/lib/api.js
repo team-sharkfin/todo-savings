@@ -30,8 +30,13 @@ export function apiRouter() {
   });
 
   router.post("/rewards", protect, async (req, res) => {
-    const rewardId = await addReward({ ...req.body, userId: req.user });
-    res.json({ rewardId });
+    try {
+      const rewardId = await addReward({ ...req.body, userId: req.user });
+      res.json({ rewardId });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).end();
+    }
   });
 
   router.get("/session", (req, res) => {
