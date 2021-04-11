@@ -17,7 +17,9 @@ const RewardForm = () => {
     setAmountPerTask("");
 
     queryClient.setQueryData("rewards", (rewards) =>
-      rewards.concat([{ rewardId, ...reward }])
+      rewards.concat([
+        { rewardId, taskCount: 0, completedTaskCount: 0, ...reward },
+      ])
     );
   });
 
