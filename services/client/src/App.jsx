@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { checkSession } from "./api";
+import Landing from "./Landing.jsx";
 import Navbar from "./Navbar.jsx";
 import {CreateForm, CreateBar} from "./CreateTask.jsx";
 import Profile from "./Profile.jsx";
@@ -33,4 +34,3 @@ const App = () => {
 };
 
 export default App;
- 
