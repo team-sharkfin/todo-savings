@@ -26,13 +26,15 @@ const Navbar = ({ displayLinks }) => (
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/" exact>
+                  Rewards
+                </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/tasks">Tasks</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/rewards">Rewards</NavLink>
+                <NavLink to="/profile">Profile</NavLink>
               </li>
             </ul>
           </div>
