@@ -51,9 +51,8 @@ CREATE TABLE `Users` (
   `registered` date NOT NULL DEFAULT curdate(),
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`u_id`),
-  UNIQUE KEY `u_id` (`u_id`)
-<<<<<<< Updated upstream
-=======
+  UNIQUE KEY `u_id` (`u_id`),
+  UNIQUE KEY `git_id` (`git_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `Goal_Totals`;
@@ -62,7 +61,6 @@ CREATE TABLE `Goal_Totals` (
   `g_total` double NOT NULL,
   PRIMARY KEY (`g_id`),
   UNIQUE KEY `g_id` (`g_id`)
->>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { checkSession } from "./api.js";
-<<<<<<< Updated upstream
-import Landing from "./Landing.jsx";
-import Navbar from "./Navbar.jsx";
-=======
 import Content from "./Content.jsx";
 import Navbar from "./Navbar.jsx";
 import Landing from "./Landing.jsx";
->>>>>>> Stashed changes
 import "./App.css";
 
 const App = () => {

@@ -1,6 +1,6 @@
 # todo-savings
 
-## Development
+## Running the Application
 
 Install the following prerequisites:
 
@@ -18,7 +18,7 @@ Change to the freshly cloned repo, rename `.env.example` to `.env`, and edit the
 Finally, start the application.
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 Refer to `.env` for the ports that the various services are listening on.
