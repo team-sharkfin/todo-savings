@@ -25,6 +25,8 @@ export function apiRouter() {
 
       if (profile) {
         res.json(profile);
+      } else {
+        res.status(404).end();
       }
     } catch (error) {
       res.status(500).send(error);
