@@ -31,8 +31,6 @@ export async function addUserByGitHubId(githubId) {
   return id;
 }
 
-<<<<<<< Updated upstream
-=======
 export async function updateTaskToComplete(taskId) {
   const today = new Date().toISOString().slice(0, 10);
   const [id] = await db
@@ -42,7 +40,6 @@ export async function updateTaskToComplete(taskId) {
   return id;
 }
 
->>>>>>> Stashed changes
 export async function addReward({ name, goal, amountPerTask, userId }) {
   const [id] = await db
     .insert({
@@ -75,8 +72,6 @@ export function findRewards(userId) {
     )
     .groupBy("rewardId", "r.name", "r.goal", "amountPerTask");
 }
-<<<<<<< Updated upstream
-=======
 
 export function findTasks(userId) {
   return db
@@ -91,4 +86,3 @@ export function findTasks(userId) {
     .where("r.user_id", userId)
     .andWhere("r.completed_at", null);
 }
->>>>>>> Stashed changes
