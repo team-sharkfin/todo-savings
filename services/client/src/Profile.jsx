@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <>
-      <Banner name={data.name ?? "Hi!"} />
+      <Banner>{data.name ?? "Hi!"}</Banner>
       <div className="row g-0">
         <ProfileStats />
         <ProfileMain />

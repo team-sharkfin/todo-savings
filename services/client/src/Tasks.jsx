@@ -4,7 +4,7 @@ import Banner from "./Banner.jsx";
 const Tasks = () => (
   <div className="container">
     <br />
-    <Banner name="Upcoming Tasks" />
+    <Banner>Upcoming Tasks</Banner>
     <div className="row g-0">
       <TaskTable />
     </div>

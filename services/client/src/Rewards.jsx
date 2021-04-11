@@ -4,7 +4,7 @@ import RewardAccordion from "./RewardAccordion.jsx";
 const Rewards = () => (
   <div className="container">
     <br />
-    <Banner name="Pending Rewards" />
+    <Banner>Pending Rewards</Banner>
     <div className="row g-0">
       <RewardAccordion />
     </div>
