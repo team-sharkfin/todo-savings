@@ -18,7 +18,13 @@ const RewardForm = () => {
 
     queryClient.setQueryData("rewards", (rewards) =>
       rewards.concat([
-        { rewardId, taskCount: 0, completedTaskCount: 0, ...reward },
+        {
+          rewardId,
+          taskCount: 0,
+          completedTaskCount: 0,
+          amountEarned: 0,
+          ...reward,
+        },
       ])
     );
   });
