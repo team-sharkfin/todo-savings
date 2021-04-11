@@ -117,3 +117,77 @@ export async function setTaskComplete(taskId, isComplete) {
     .where({ task_id: taskId })
     .update({ is_complete: isComplete });
 }
+
+export function findCompleteRewardsAll(userId) {
+  return db
+    .select(
+      "t.task_id as taskId",
+      "t.name",
+      "r.name as reward",
+      "r.amount_per_task as amountPerTask",
+      "t.completed_at as completed"
+    )
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .whereNotNull("t.completed_at")
+    .andWhere("r.user_id", userId);
+}
+
+export function countCompleteRewardsAll(userId) {
+  return db
+    .count("t.task_id")
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .whereNotNull("t.completed_at")
+    .andWhere("r.user_id", userId);
+}
+
+export function countCompleteRewardsTime(userId, time) {
+  return db
+    .count("t.task_id")
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .whereRaw("? - t.completed_at < ?", [Date.now(), time])
+    .andWhere("r.user_id", userId);
+}
+
+export function countDueTasksAll(userId) {
+  return db
+    .count("task_id")
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .whereNull("t.completed_at")
+    .andWhere("r.user_id", userId);
+}
+
+export function countDueTasksTime(userId, time) {
+  return db
+    .count("task_id")
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .whereNull("t.completed_at")
+    .andWhere((builder) =>
+      builder.whereRaw("? - t.created_at < ?", [Date.now(), time])
+    )
+    .andWhere("r.user_id", userId);
+}
+
+export function findLastRewardMet(userId) {
+  return db
+    .select("r.name", "t.completed_at")
+    .from({ r: "rewards" })
+    .innerJoin({ t: "tasks" })
+    .where("r.user_id", userId)
+    .orderBy("t.completed_at", "desc")
+    .limit(1);
+}
+
+export function findLastTaskSet(userId) {
+  return db
+    .select("t.name", "t.created_at")
+    .from({ r: "rewards" })
+    .innerJoin({ t: "tasks" })
+    .where("r.user_id", userId)
+    .orderBy("t.completed_at", "desc")
+    .limit(1);
+}

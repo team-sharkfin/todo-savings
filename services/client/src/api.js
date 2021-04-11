@@ -57,3 +57,8 @@ export async function getTasks() {
   const response = await request("/tasks");
   return response.json();
 }
+
+export async function getProfile() {
+  const response = await request("/profile");
+  return response.json();
+}
