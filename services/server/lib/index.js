@@ -11,6 +11,7 @@ passport.serializeUser((id, done) => done(null, id));
 passport.deserializeUser((id, done) => done(null, id));
 
 const app = express();
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session());
 app.use(passport.initialize());
