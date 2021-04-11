@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import Banner from "./Banner.jsx";
 
 const Tasks = () => (
-  <div className="container">
-    <br />
+  <>
     <Banner>Upcoming Tasks</Banner>
     <div className="row g-0">
       <TaskTable />
     </div>
-  </div>
+  </>
 );
 
 const TaskTable = () => (
