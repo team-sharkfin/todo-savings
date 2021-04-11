@@ -10,7 +10,7 @@ const RewardForm = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(async (reward) => {
-    const rewardId = await addReward(reward);
+    const { rewardId } = await addReward(reward);
 
     setName("");
     setGoal("");
