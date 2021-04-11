@@ -37,4 +37,7 @@ module.exports = {
       filename: "[name].[contenthash].css",
     }),
   ],
+  devServer: {
+    port: 8000,
+  },
 };

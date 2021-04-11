@@ -1,11 +1,6 @@
 # todo-savings
 
-## Running the Application
-
-Install the following prerequisites:
-
-- [Docker](https://docs.docker.com/get-started/#download-and-install-docker)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+## Getting Started
 
 Clone this repo.
 
@@ -13,12 +8,20 @@ Clone this repo.
 git clone git@github.com:team-sharkfin/todo-savings.git
 ```
 
-Change to the freshly cloned repo, rename `.env.example` to `.env`, and edit the values as needed.
-
-Finally, start the application.
+Change to this directory.
 
 ```bash
-docker-compose up -d
+cd todo-savings
 ```
 
-Refer to `.env` for the ports that the various services are listening on.
+Install dependencies.
+
+```bash
+npm ci
+```
+
+Rename `.env.example` to `.env`, update the necessary values, then run the `dev` script.
+
+```bash
+npm run dev
+```

@@ -1,8 +1,11 @@
 {
-  "name": "todo-savings-server",
+  "name": "server",
   "private": true,
   "type": "module",
   "main": "./lib",
+  "scripts": {
+    "dev": "nodemon ."
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -10,6 +13,7 @@
     "express-session": "^1.17.1",
     "knex": "^0.95.4",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-github": "^1.1.0"
   }
