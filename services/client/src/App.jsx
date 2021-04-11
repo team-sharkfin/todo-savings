@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { checkSession } from "./api";
+import { checkSession } from "./api.js";
 import Navbar from "./Navbar.jsx";
 import {CreateForm, CreateBar} from "./CreateTask.jsx";
 import Profile from "./Profile.jsx";
 import Tasks from "./Tasks.jsx";
 import Rewards from "./Rewards.jsx"
+import Landing from "./Landing.jsx"
 import "./App.css";
 
 const App = () => {
