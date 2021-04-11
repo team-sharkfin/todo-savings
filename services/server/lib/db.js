@@ -1,13 +1,18 @@
 import knex from "knex";
 
-const { MYSQL_DATABASE, MYSQL_ROOT_PASSWORD } = process.env;
+const {
+  MYSQL_HOSTNAME,
+  MYSQL_USERNAME,
+  MYSQL_PASSWORD,
+  MYSQL_DATABASE,
+} = process.env;
 
 const db = knex({
   client: "mysql",
   connection: {
-    host: "db",
-    user: "root",
-    password: MYSQL_ROOT_PASSWORD,
+    host: MYSQL_HOSTNAME,
+    user: MYSQL_USERNAME,
+    password: MYSQL_PASSWORD,
     database: MYSQL_DATABASE,
   },
 });

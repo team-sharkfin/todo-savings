@@ -1,4 +1,4 @@
-import { EXPRESS_BASE_URL } from "./config.js";
+const EXPRESS_BASE_URL = process.env.EXPRESS_BASE_URL;
 
 const Landing = () => {
   function handleSignInButtonClick(event) {
