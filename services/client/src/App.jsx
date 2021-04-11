@@ -25,7 +25,11 @@ const App = () => {
       <BrowserRouter>
         <Navbar displayLinks={isLoggedIn} />
         <main role="main" className="container mt-4">
-          {isLoggedIn ? <RouterContent /> : <Landing />}
+          <div className="card">
+            <div className="card-body">
+              {isLoggedIn ? <RouterContent /> : <Landing />}
+            </div>
+          </div>
         </main>
       </BrowserRouter>
     </div>
