@@ -6,7 +6,7 @@ import Rewards from "./Rewards.jsx";
 
 const queryClient = new QueryClient();
 
-const Content = () => (
+const RouterContent = () => (
   <QueryClientProvider client={queryClient}>
     <Switch>
       <Route path="/tasks">
@@ -22,4 +22,4 @@ const Content = () => (
   </QueryClientProvider>
 );
 
-export default Content;
+export default RouterContent;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { checkSession } from "./api.js";
-import Content from "./Content.jsx";
 import Navbar from "./Navbar.jsx";
 import Landing from "./Landing.jsx";
+import RouterContent from "./RouterContent.jsx";
 import "./App.css";
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar displayLinks={isLoggedIn} />
         <div className="container mt-4">
-          {isLoggedIn ? <Content /> : <Landing />}
+          {isLoggedIn ? <RouterContent /> : <Landing />}
         </div>
       </BrowserRouter>
     </div>
