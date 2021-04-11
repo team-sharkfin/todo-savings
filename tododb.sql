@@ -26,7 +26,7 @@ CREATE TABLE `tasks` (
   `task_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `created_at` date NOT NULL DEFAULT curdate(),
-  `completed_at` date NOT NULL,
+  `completed_at` date DEFAULT NULL,
   `reward_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`task_id`),
   KEY `reward_id` (`reward_id`),
@@ -44,4 +44,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-04-11 09:26:31
+-- 2021-04-11 16:47:20
