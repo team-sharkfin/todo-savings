@@ -24,9 +24,9 @@ const App = () => {
     <div className="fadein">
       <BrowserRouter>
         <Navbar displayLinks={isLoggedIn} />
-        <div className="container mt-4">
+        <main role="main" className="container mt-4">
           {isLoggedIn ? <RouterContent /> : <Landing />}
-        </div>
+        </main>
       </BrowserRouter>
     </div>
   );
