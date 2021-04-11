@@ -1,4 +1,4 @@
-import PropTypes from "react";
+import PropTypes from "prop-types";
 
 const Banner = (props) => (
   <div className="row g-0" id="userBanner">
