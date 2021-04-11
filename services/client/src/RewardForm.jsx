@@ -12,6 +12,10 @@ const RewardForm = () => {
   const mutation = useMutation(async (reward) => {
     const rewardId = await addReward(reward);
 
+    setName("");
+    setGoal("");
+    setAmountPerTask("");
+
     queryClient.setQueryData("rewards", (rewards) =>
       rewards.concat([{ rewardId, ...reward }])
     );
