@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { checkSession } from "./api.js";
-import Navbar from "./Navbar.jsx";
 import Landing from "./Landing.jsx";
+import Navbar from "./Navbar.jsx";
 import RouterContent from "./RouterContent.jsx";
 import "./App.css";
 
@@ -20,10 +20,11 @@ const App = () => {
   if (isLoading) {
     return null;
   }
+
   return (
     <div className="fadein">
       <BrowserRouter>
-        <Navbar displayLinks={isLoggedIn} />
+        {isLoggedIn && <Navbar />}
         <main role="main" className="container mt-4">
           <div className="card">
             <div className="card-body">
