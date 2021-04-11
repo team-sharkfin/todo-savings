@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
   `task_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `is_complete` tinyint(1) NOT NULL,
   `created_at` date NOT NULL DEFAULT curdate(),
   `completed_at` date DEFAULT NULL,
   `reward_id` int(10) unsigned NOT NULL,
@@ -44,4 +45,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-04-11 16:47:20
+-- 2021-04-11 22:18:56
