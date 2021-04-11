@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { checkSession } from "./api.js";
+import Content from "./Content.jsx";
 import Navbar from "./Navbar.jsx";
-import {CreateForm, CreateBar} from "./CreateTask.jsx";
-import Profile from "./Profile.jsx";
-import Tasks from "./Tasks.jsx";
-import Rewards from "./Rewards.jsx"
-import Landing from "./Landing.jsx"
+import Landing from "./Landing.jsx";
 import "./App.css";
 
 const App = () => {
@@ -27,7 +24,9 @@ const App = () => {
     <div className="fadein">
       <BrowserRouter>
         <Navbar displayLinks={isLoggedIn} />
-        <div className="container mt-1">{!isLoggedIn && <Landing />}</div>
+        <div className="container mt-1">
+          {isLoggedIn ? <Content /> : <Landing />}
+        </div>
       </BrowserRouter>
     </div>
   );
