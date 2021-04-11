@@ -145,7 +145,7 @@ const RewardEarned = (props) => (
 
 RewardEarned.propTypes = {
   amount: PropTypes.number,
-  goal: PropTypes.number,
+  goal: PropTypes.string,
   task: PropTypes.string,
   count: PropTypes.number,
   date: PropTypes.string,
