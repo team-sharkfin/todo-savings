@@ -14,11 +14,10 @@ const RewardAccordion = ({ rewards }) => {
             rewardId,
             name,
             goal,
-            amountPerTask,
+            amountEarned,
             taskCount,
             completedTaskCount,
           }) => {
-            const amountRewarded = amountPerTask * completedTaskCount;
             const tasksRemaining = taskCount - completedTaskCount;
 
             return (
@@ -35,7 +34,7 @@ const RewardAccordion = ({ rewards }) => {
                     aria-expanded="false"
                     aria-controls={`flush-collapse-${rewardId}`}
                   >
-                    ${amountRewarded} towards {name}
+                    ${amountEarned} towards {name}
                   </button>
                 </h2>
                 <div
@@ -45,8 +44,8 @@ const RewardAccordion = ({ rewards }) => {
                   data-bs-parent="#pendingRewards"
                 >
                   <div className="accordion-body">
-                    <ProgressBar percentage={(amountRewarded / goal) * 100}>
-                      ${amountRewarded} out of ${goal}
+                    <ProgressBar percentage={(amountEarned / goal) * 100}>
+                      ${amountEarned} out of ${goal}
                     </ProgressBar>
                     {tasksRemaining} of {taskCount} task(s) remaining
                   </div>

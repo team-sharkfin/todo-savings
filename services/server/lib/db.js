@@ -61,7 +61,8 @@ export function findRewards(userId) {
       "r.goal",
       "r.amount_per_task as amountPerTask",
       db.raw("COALESCE(SUM(t.task_id), 0) as taskCount"),
-      db.raw("COALESCE(SUM(c.task_id), 0) as completedTaskCount")
+      db.raw("COALESCE(SUM(c.task_id), 0) as completedTaskCount"),
+      db.raw("r.amount_per_task * COALESCE(SUM(c.task_id), 0) as amountEarned")
     )
     .from({ r: "rewards" })
     .leftJoin({ t: "tasks" }, "r.reward_id", "t.reward_id")
@@ -73,16 +74,29 @@ export function findRewards(userId) {
     .groupBy("rewardId", "r.name", "r.goal", "amountPerTask");
 }
 
+export async function addTask({ name, rewardId, userId }) {
+  const [id] = await db
+    .insert({
+      name,
+      reward_id: rewardId,
+      user_id: userId,
+    })
+    .into("tasks");
+
+  return id;
+}
+
 export function findTasks(userId) {
   return db
     .select(
       "t.task_id as taskId",
       "t.name",
-      "r.name as reward",
-      "r.amount_per_task as amountPerTask"
+      "r.name",
+      db.raw(
+        "CASE WHEN t.completed_at IS NULL THEN true ELSE false END as isComplete"
+      )
     )
     .from({ t: "tasks" })
     .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
-    .where("r.user_id", userId)
-    .andWhere("r.completed_at", null);
+    .where("r.user_id", userId);
 }
