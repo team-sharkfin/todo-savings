@@ -46,7 +46,7 @@ const RewardForm = () => {
   }
 
   return (
-    <CollapsibleFooter id="foo" buttonLabel="Add Reward">
+    <CollapsibleFooter id="rewardForm" buttonLabel="Add Reward">
       <form className="row g-3" onSubmit={handleSubmit}>
         <div className="col-12">
           <label htmlFor="rewardName" className="form-label">
