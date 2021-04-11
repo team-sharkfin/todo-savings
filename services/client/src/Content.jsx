@@ -1,6 +1,5 @@
 import { Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { CreateForm, CreateBar } from "./CreateTask";
 import Profile from "./Profile.jsx";
 import Tasks from "./Tasks.jsx";
 import Rewards from "./Rewards.jsx";
@@ -20,8 +19,6 @@ const Content = () => (
         <Rewards />
       </Route>
     </Switch>
-    <CreateForm />
-    <CreateBar />
   </QueryClientProvider>
 );
 
