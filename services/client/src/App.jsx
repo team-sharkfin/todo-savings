@@ -15,7 +15,7 @@ const App = () => {
       setLoggedIn(session);
       setLoading(false);
     });
-  });
+  }, []);
 
   if (isLoading) {
     return null;
