@@ -28,6 +28,31 @@ export async function getRewards() {
   return response.json();
 }
 
+export async function addTask(task) {
+  const response = await request("/tasks", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(task),
+  });
+  return response.json();
+}
+
+export async function setTaskComplete(taskId, isComplete) {
+  const response = await request("/tasks", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      taskId: parseInt(taskId),
+      isComplete: isComplete ? 1 : 0,
+    }),
+  });
+  return response.json();
+}
+
 export async function getTasks() {
   const response = await request("/tasks");
   return response.json();

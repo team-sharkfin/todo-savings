@@ -74,12 +74,20 @@ export function findRewards(userId) {
     .groupBy("rewardId", "r.name", "r.goal", "amountPerTask");
 }
 
-export async function addTask({ name, rewardId, userId }) {
+export async function findRewardUserId(rewardId) {
+  const rows = await db
+    .select("user_id")
+    .from("rewards")
+    .where("reward_id", rewardId);
+
+  return rows.length ? rows[0]["user_id"] : null;
+}
+
+export async function addTask({ name, rewardId }) {
   const [id] = await db
     .insert({
       name,
       reward_id: rewardId,
-      user_id: userId,
     })
     .into("tasks");
 
@@ -88,15 +96,24 @@ export async function addTask({ name, rewardId, userId }) {
 
 export function findTasks(userId) {
   return db
-    .select(
-      "t.task_id as taskId",
-      "t.name",
-      "r.name",
-      db.raw(
-        "CASE WHEN t.completed_at IS NULL THEN true ELSE false END as isComplete"
-      )
-    )
+    .select("t.task_id as taskId", "t.name", "t.is_complete as isComplete")
     .from({ t: "tasks" })
     .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
     .where("r.user_id", userId);
+}
+
+export async function findTaskUserId(taskId) {
+  const rows = await db
+    .select("r.user_id")
+    .from({ r: "rewards" })
+    .innerJoin({ t: "tasks" }, "r.reward_id", "t.reward_id")
+    .where("t.task_id", taskId);
+
+  return rows.length ? rows[0]["user_id"] : null;
+}
+
+export async function setTaskComplete(taskId, isComplete) {
+  await db("tasks")
+    .where({ task_id: taskId })
+    .update({ is_complete: isComplete });
 }
