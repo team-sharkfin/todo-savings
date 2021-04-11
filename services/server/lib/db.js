@@ -23,7 +23,7 @@ export async function findUserByGitHubId(githubId) {
     .from("Users")
     .where({ git_id: githubId });
 
-  return rows?.[0].u_id;
+  return rows?.length ? rows[0].u_id : null;
 }
 
 export async function addUserByGitHubId(githubId) {
