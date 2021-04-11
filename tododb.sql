@@ -11,17 +11,16 @@ USE `tododb`;
 DROP TABLE IF EXISTS `Rewards`;
 CREATE TABLE `Rewards` (
   `r_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` int(11) NOT NULL,
   `task` int(11) NOT NULL,
   `amount` double NOT NULL,
-  `total` double DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
   `goal` varchar(100) NOT NULL,
   PRIMARY KEY (`r_id`),
   UNIQUE KEY `r_id` (`r_id`),
   KEY `task` (`task`),
-  KEY `user` (`user`),
+  KEY `total` (`total`),
   CONSTRAINT `rewards_task_fk` FOREIGN KEY (`task`) REFERENCES `Tasks` (`t_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `rewards_user_fk` FOREIGN KEY (`user`) REFERENCES `Users` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `rewards_totals_fk` FOREIGN KEY (`total`) REFERENCES `Goal_Totals` (`g_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -53,6 +52,17 @@ CREATE TABLE `Users` (
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`u_id`),
   UNIQUE KEY `u_id` (`u_id`)
+<<<<<<< Updated upstream
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Goal_Totals`;
+CREATE TABLE `Goal_Totals` (
+  `g_id` int(11) NOT NULL AUTO_INCREMENT,
+  `g_total` double NOT NULL,
+  PRIMARY KEY (`g_id`),
+  UNIQUE KEY `g_id` (`g_id`)
+>>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 
 const Navbar = ({ displayLinks }) => (
@@ -7,9 +8,9 @@ const Navbar = ({ displayLinks }) => (
     style={{ backgroundColor: "#5c6784" }}
   >
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">
+      <Link to="/" className="navbar-brand">
         Penny Jar
-      </a>
+      </Link>
       {displayLinks && (
         <>
           <button
@@ -26,13 +27,15 @@ const Navbar = ({ displayLinks }) => (
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/" exact>
+                  Rewards
+                </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/tasks">Tasks</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/rewards">Rewards</NavLink>
+                <NavLink to="/profile">Profile</NavLink>
               </li>
             </ul>
           </div>
