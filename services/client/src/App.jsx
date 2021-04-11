@@ -25,11 +25,9 @@ const App = () => {
     <div className="fadein">
       <BrowserRouter>
         {isLoggedIn && <Navbar />}
-        <main role="main" className="container mt-4">
-          <div className="card">
-            <div className="card-body">
-              {isLoggedIn ? <RouterContent /> : <Landing />}
-            </div>
+        <main role="main" className="container">
+          <div className="mt-2">
+            {isLoggedIn ? <RouterContent /> : <Landing />}
           </div>
         </main>
       </BrowserRouter>
