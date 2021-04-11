@@ -29,7 +29,8 @@ export function apiRouter() {
         res.status(404).end();
       }
     } catch (error) {
-      res.status(500).send(error);
+      console.error(error.message);
+      res.status(500).end();
     }
   });
 
