@@ -1,10 +1,10 @@
 import cors from "cors";
 import { Router } from "express";
-import { findProfile } from "./db.js";
 
 export function apiRouter() {
   const router = Router();
 
+  // eslint-disable-next-line no-unused-vars
   function protect(req, res, next) {
     if (typeof req.user === "undefined") {
       res.status(401).end();
@@ -18,21 +18,6 @@ export function apiRouter() {
       origin: process.env.APP_BASE_URL,
     })
   );
-
-  router.get("/profile", protect, async (req, res) => {
-    try {
-      const profile = await findProfile(req.user);
-
-      if (profile) {
-        res.json(profile);
-      } else {
-        res.status(404).end();
-      }
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).end();
-    }
-  });
 
   router.get("/session", (req, res) => {
     const session = typeof req.user !== "undefined";

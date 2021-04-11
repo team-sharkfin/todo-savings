@@ -19,23 +19,14 @@ const db = knex({
 
 export async function findUserByGitHubId(githubId) {
   const rows = await db
-    .select("u_id")
-    .from("Users")
-    .where({ git_id: githubId });
+    .select("user_id")
+    .from("users")
+    .where({ github_id: githubId });
 
-  return rows.length ? rows[0].u_id : null;
+  return rows.length ? rows[0]["user_id"] : null;
 }
 
 export async function addUserByGitHubId(githubId) {
-  const [id] = await db.insert({ git_id: githubId }).into("Users");
+  const [id] = await db.insert({ github_id: githubId }).into("users");
   return id;
-}
-
-export async function findProfile(userId) {
-  const rows = await db
-    .select("name", "birthday")
-    .from("Users")
-    .where({ u_id: userId });
-
-  return rows ? rows[0] : null;
 }
