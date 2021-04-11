@@ -31,6 +31,18 @@ export async function addUserByGitHubId(githubId) {
   return id;
 }
 
+<<<<<<< Updated upstream
+=======
+export async function updateTaskToComplete(taskId) {
+  const today = new Date().toISOString().slice(0, 10);
+  const [id] = await db
+    .knex("tasks")
+    .update({ completed_at: today })
+    .where({ task_id: taskId });
+  return id;
+}
+
+>>>>>>> Stashed changes
 export async function addReward({ name, goal, amountPerTask, userId }) {
   const [id] = await db
     .insert({
@@ -63,3 +75,20 @@ export function findRewards(userId) {
     )
     .groupBy("rewardId", "r.name", "r.goal", "amountPerTask");
 }
+<<<<<<< Updated upstream
+=======
+
+export function findTasks(userId) {
+  return db
+    .select(
+      "t.task_id as taskId",
+      "t.name",
+      "r.name as reward",
+      "r.amount_per_task as amountPerTask"
+    )
+    .from({ t: "tasks" })
+    .innerJoin({ r: "rewards" }, "t.reward_id", "r.reward_id")
+    .where("r.user_id", userId)
+    .andWhere("r.completed_at", null);
+}
+>>>>>>> Stashed changes
