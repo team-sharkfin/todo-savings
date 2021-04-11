@@ -27,6 +27,6 @@ export async function findUserByGitHubId(githubId) {
 }
 
 export async function addUserByGitHubId(githubId) {
-  const [id] = await db.insert({ git_id: githubId }, ["u_id"]).into("Users");
+  const [id] = await db.insert({ git_id: githubId }).into("Users");
   return id;
 }
