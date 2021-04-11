@@ -7,14 +7,14 @@ import Rewards from "./Rewards.jsx";
 const Content = () => (
   <>
     <Switch>
-      <Route path="/">
-        <Rewards />
-      </Route>
       <Route path="/tasks">
         <Tasks />
       </Route>
       <Route path="/profile">
         <Profile />
+      </Route>
+      <Route path="/">
+        <Rewards />
       </Route>
     </Switch>
     <CreateForm />
