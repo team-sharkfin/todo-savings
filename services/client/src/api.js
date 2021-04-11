@@ -11,3 +11,8 @@ export async function checkSession() {
   const response = await request("/session");
   return response.json();
 }
+
+export async function getProfile() {
+  const response = await request("/profile");
+  return response.json();
+}

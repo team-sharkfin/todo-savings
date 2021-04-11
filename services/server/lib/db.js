@@ -30,3 +30,12 @@ export async function addUserByGitHubId(githubId) {
   const [id] = await db.insert({ git_id: githubId }).into("Users");
   return id;
 }
+
+export async function findProfile(userId) {
+  const rows = await db
+    .select("name", "birthday")
+    .from("Users")
+    .where({ u_id: userId });
+
+  return rows ? rows[0] : null;
+}
