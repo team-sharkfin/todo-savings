@@ -1,7 +1,6 @@
 {
   "name": "todo-savings",
   "private": true,
-  "type": "module",
   "scripts": {
     "lint": "eslint --ext .js,.jsx .",
     "test": "echo \"Error: no test specified\" && exit 1"
